@@ -2,4 +2,6 @@
 *.fd
 *.qcow2
 *.siglist
+*.bak
 *.bin
+*.fw

@@ -2,6 +2,7 @@ FWUPDTOOL=fwupdtool
 
 custom_VARS.fd: custom_VARS.builder.xml custom_PK.siglist custom_KEK.siglist custom_db.siglist custom_dbx.siglist
 	$(FWUPDTOOL) firmware-build custom_VARS.builder.xml custom_VARS.fd
+	cp custom_VARS.fd custom_VARS.bak
 
 Fedora-Server-Guest-Generic-42-1.1.x86_64.qcow2:
 	wget https://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/images/Fedora-Server-Guest-Generic-42-1.1.x86_64.qcow2
