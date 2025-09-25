@@ -7,31 +7,53 @@
     <size>0xdfb8</size>
     <firmware gtype="FuEfiVssAuthVariable">
       <id>PK</id>
-      <filename>custom_PK.siglist</filename>
       <vendor_guid>8be4df61-93ca-11d2-aa0d-00e098032b8c</vendor_guid>
       <state>variable-added</state>
       <attributes>non-volatile,bootservice-access,runtime-access,time-based-authenticated-write-access</attributes>
+      <firmware gtype="FuEfiSignatureList">
+        <firmware gtype="FuEfiX509Signature">
+          <filename>0dca64d8da495ecdd0f5570a8c3bc61192652c31_CN=ASUSTeK MotherBoard PK Certificate.der</filename>
+        </firmware>
+      </firmware>
     </firmware>
     <firmware gtype="FuEfiVssAuthVariable">
       <id>KEK</id>
-      <filename>custom_KEK.siglist</filename>
       <vendor_guid>8be4df61-93ca-11d2-aa0d-00e098032b8c</vendor_guid>
       <state>variable-added</state>
       <attributes>non-volatile,bootservice-access,runtime-access,time-based-authenticated-write-access</attributes>
+      <firmware gtype="FuEfiSignatureList">
+        <firmware gtype="FuEfiX509Signature">
+          <filename>9f402b1cc0243cbedc58a525789816ccca7687a9_C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Corporation KEK CA 2011.der</filename>
+        </firmware>
+        <firmware gtype="FuEfiX509Signature">
+          <filename>b207ca37ca736afd9836d12d447e02484f161578_CN=ASUSTeK MotherBoard KEK Certificate.der</filename>
+        </firmware>
+      </firmware>
     </firmware>
     <firmware gtype="FuEfiVssAuthVariable">
       <id>db</id>
-      <filename>custom_db.siglist</filename>
       <vendor_guid>d719b2cb-3d3a-4596-a3bc-dad00e67656f</vendor_guid>
       <state>variable-added</state>
       <attributes>non-volatile,bootservice-access,runtime-access,time-based-authenticated-write-access</attributes>
+      <firmware gtype="FuEfiSignatureList">
+        <firmware gtype="FuEfiX509Signature">
+          <filename>e30cf09dabeab32a6e3b07a7135245de05ffb658_C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Corporation UEFI CA 2011.der</filename>
+        </firmware>
+        <firmware gtype="FuEfiX509Signature">
+          <filename>1a8b6903d64cc9ad09d12fcb355663a458a09ef0_C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Windows Production PCA 2011.der</filename>
+        </firmware>
+      </firmware>
     </firmware>
     <firmware gtype="FuEfiVssAuthVariable">
       <id>dbx</id>
-      <filename>custom_dbx.siglist</filename>
       <vendor_guid>d719b2cb-3d3a-4596-a3bc-dad00e67656f</vendor_guid>
       <state>variable-added</state>
       <attributes>non-volatile,bootservice-access,runtime-access,time-based-authenticated-write-access</attributes>
+      <firmware gtype="FuEfiSignatureList">
+        <firmware gtype="FuEfiSignature">
+          <filename>DBXUpdate-20241101.x64.bin</filename>
+        </firmware>
+      </firmware>
     </firmware>
   </firmware>
   <firmware>

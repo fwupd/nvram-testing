@@ -1,8 +1,0 @@
-<firmware gtype="FuEfiSignatureList">
-  <firmware gtype="FuEfiX509Signature">
-    <filename>9f402b1cc0243cbedc58a525789816ccca7687a9_C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Corporation KEK CA 2011.der</filename>
-  </firmware>
-  <firmware gtype="FuEfiX509Signature">
-    <filename>b207ca37ca736afd9836d12d447e02484f161578_CN=ASUSTeK MotherBoard KEK Certificate.der</filename>
-  </firmware>
-</firmware>

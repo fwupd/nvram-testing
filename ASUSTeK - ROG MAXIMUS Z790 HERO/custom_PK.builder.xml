@@ -1,5 +1,0 @@
-<firmware gtype="FuEfiSignatureList">
-  <firmware gtype="FuEfiX509Signature">
-    <filename>0dca64d8da495ecdd0f5570a8c3bc61192652c31_CN=ASUSTeK MotherBoard PK Certificate.der</filename>
-  </firmware>
-</firmware>
