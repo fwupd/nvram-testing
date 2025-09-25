@@ -1,0 +1,8 @@
+<firmware gtype="FuEfiSignatureList">
+  <firmware gtype="FuEfiX509Signature">
+    <filename>e30cf09dabeab32a6e3b07a7135245de05ffb658_C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Corporation UEFI CA 2011.der</filename>
+  </firmware>
+  <firmware gtype="FuEfiX509Signature">
+    <filename>1a8b6903d64cc9ad09d12fcb355663a458a09ef0_C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Windows Production PCA 2011.der</filename>
+  </firmware>
+</firmware>

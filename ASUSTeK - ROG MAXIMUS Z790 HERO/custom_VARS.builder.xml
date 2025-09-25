@@ -1,0 +1,44 @@
+<firmware gtype="FuEfiVolume">
+  <id>fff12b8d-7696-4c8b-a985-2747075b4f50</id>
+  <alignment>0x4</alignment>
+  <size>0x20000</size>
+  <attrs>0xfeff</attrs>
+  <firmware gtype="FuEfiVss2VariableStore">
+    <size>0xdfb8</size>
+    <firmware gtype="FuEfiVssAuthVariable">
+      <id>PK</id>
+      <filename>custom_PK.siglist</filename>
+      <vendor_guid>8be4df61-93ca-11d2-aa0d-00e098032b8c</vendor_guid>
+      <state>variable-added</state>
+      <attributes>non-volatile,bootservice-access,runtime-access,time-based-authenticated-write-access</attributes>
+    </firmware>
+    <firmware gtype="FuEfiVssAuthVariable">
+      <id>KEK</id>
+      <filename>custom_KEK.siglist</filename>
+      <vendor_guid>8be4df61-93ca-11d2-aa0d-00e098032b8c</vendor_guid>
+      <state>variable-added</state>
+      <attributes>non-volatile,bootservice-access,runtime-access,time-based-authenticated-write-access</attributes>
+    </firmware>
+    <firmware gtype="FuEfiVssAuthVariable">
+      <id>db</id>
+      <filename>custom_db.siglist</filename>
+      <vendor_guid>d719b2cb-3d3a-4596-a3bc-dad00e67656f</vendor_guid>
+      <state>variable-added</state>
+      <attributes>non-volatile,bootservice-access,runtime-access,time-based-authenticated-write-access</attributes>
+    </firmware>
+    <firmware gtype="FuEfiVssAuthVariable">
+      <id>dbx</id>
+      <filename>custom_dbx.siglist</filename>
+      <vendor_guid>d719b2cb-3d3a-4596-a3bc-dad00e67656f</vendor_guid>
+      <state>variable-added</state>
+      <attributes>non-volatile,bootservice-access,runtime-access,time-based-authenticated-write-access</attributes>
+    </firmware>
+  </firmware>
+  <firmware>
+    <data size="0x1000" />
+  </firmware>
+  <firmware gtype="FuEfiFtwStore">
+    <size>0x1000</size>
+    <state>healthy</state>
+  </firmware>
+</firmware>
