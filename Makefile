@@ -1,6 +1,6 @@
 FWUPDTOOL=fwupdtool
 
-custom_VARS.fd: custom_VARS.builder.xml custom_PK.siglist custom_KEK.siglist custom_db.siglist custom_dbx.siglist
+custom_VARS.fd: custom_VARS.builder.xml
 	$(FWUPDTOOL) firmware-build custom_VARS.builder.xml custom_VARS.fd
 	cp custom_VARS.fd custom_VARS.bak
 
@@ -33,17 +33,6 @@ clean:
 	rm -f *.siglist *.fd
 
 compare:
-	$(FWUPDTOOL) firmware-extract custom_VARS.fd efi-volume
-	echo "extracting"
-	$(FWUPDTOOL) firmware-parse custom_PK.siglist efi-signature-list &> PK.bak
-	$(FWUPDTOOL) firmware-parse id-PK.fw efi-signature-list &> PK.txt
-	diff PK.bak PK.txt
-	$(FWUPDTOOL) firmware-parse custom_KEK.siglist efi-signature-list &> KEK.bak
-	$(FWUPDTOOL) firmware-parse id-KEK.fw efi-signature-list &> KEK.txt
-	diff KEK.bak KEK.txt
-	$(FWUPDTOOL) firmware-parse custom_dbx.siglist efi-signature-list &> dbx.bak
-	$(FWUPDTOOL) firmware-parse id-dbx.fw efi-signature-list &> dbx.txt
-	diff dbx.bak dbx.txt
-	$(FWUPDTOOL) firmware-parse custom_db.siglist efi-signature-list &> db.bak
-	$(FWUPDTOOL) firmware-parse id-db.fw efi-signature-list &> db.txt
-	diff db.bak db.txt
+	$(FWUPDTOOL) firmware-export custom_VARS.bak efi-volume > old.txt
+	$(FWUPDTOOL) firmware-export custom_VARS.fd efi-volume > new.txt
+	diff old.txt new.txt
