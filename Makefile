@@ -4,10 +4,13 @@ custom_VARS.fd: custom_VARS.builder.xml
 	$(FWUPDTOOL) firmware-build custom_VARS.builder.xml custom_VARS.fd
 	cp custom_VARS.fd custom_VARS.bak
 
-Fedora-Server-Guest-Generic-42-1.1.x86_64.qcow2:
-	wget https://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/images/Fedora-Server-Guest-Generic-42-1.1.x86_64.qcow2
+get_reqs:
+	wget -nc -P ../ https://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/images/Fedora-Server-Guest-Generic-42-1.1.x86_64.qcow2
+	cp ../Fedora-Server-Guest-Generic-42-1.1.x86_64.qcow2 .
+	wget -nc -P ../ https://fwupd.org/downloads/093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab
+	gcab -x ../093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab
 
-run: Fedora-Server-Guest-Generic-42-1.1.x86_64.qcow2 custom_VARS.fd
+run: get_reqs custom_VARS.fd
 	qemu-system-x86_64 \
 		-cpu host -machine type=q35,accel=kvm -m 4G -smp 4 \
 		-nic user,model=virtio \
