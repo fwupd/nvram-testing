@@ -9,6 +9,11 @@ custom_VARS.fd: custom_VARS.builder.xml
 get_reqs:
 	wget -nc -P ../ $(IMAGE_URL)
 	cp ../$(IMAGE) .
+	#virt-copy-in -a $(IMAGE) ../update-and-shutdown.service /etc/systemd/system
+	virt-customize \
+		--add $(IMAGE) \
+		--copy-in ../update-and-shutdown.service:/etc/systemd/system \
+		--link ../update-and-shutdown.service:/etc/systemd/system/basic.target.wants
 	wget -nc -P ../ https://fwupd.org/downloads/093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab
 	gcab -x ../093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab
 

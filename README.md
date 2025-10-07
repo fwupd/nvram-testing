@@ -2,7 +2,7 @@
 
 ## Build Requirements
 
-    sudo dnf install gcab make qemu-system-x86-core edk2-ovmf
+    sudo dnf install gcab guestfs-tools make qemu-system-x86-core edk2-ovmf
     sudo dnf copr enable rhughes/fwupd
     sudo dnf update fwupd
 

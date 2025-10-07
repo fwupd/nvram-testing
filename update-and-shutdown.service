@@ -1,0 +1,9 @@
+[Unit]
+Description=Just update firmware and in case of success, shut down
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStartPre=fwupdmgr --json refresh --force
+ExecStart=fwupdmgr --json update
+ExecStartPost=shutdown -h now
