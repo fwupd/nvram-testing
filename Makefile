@@ -9,11 +9,13 @@ custom_VARS.fd: custom_VARS.builder.xml
 get_reqs:
 	wget -nc -P ../ $(IMAGE_URL)
 	cp ../$(IMAGE) .
-	#virt-copy-in -a $(IMAGE) ../update-and-shutdown.service /etc/systemd/system
 	virt-customize \
 		--add $(IMAGE) \
 		--copy-in ../update-and-shutdown.service:/etc/systemd/system \
-		--link ../update-and-shutdown.service:/etc/systemd/system/basic.target.wants
+		--link ../update-and-shutdown.service:/etc/systemd/system/basic.target.wants \
+		--link /dev/null:/etc/systemd/system/initial-setup.service \
+		--link /dev/null:/etc/systemd/system/systemd-repart.service \
+		--root-password password:fwupd
 	wget -nc -P ../ https://fwupd.org/downloads/093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab
 	gcab -x ../093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab
 
@@ -23,6 +25,7 @@ run: get_reqs custom_VARS.fd
 		-nic user,model=virtio \
 		-drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.secboot.fd \
 		-drive if=pflash,format=raw,file=custom_VARS.fd \
+		-vnc :1 \
 		$(IMAGE)
 
 dump:
