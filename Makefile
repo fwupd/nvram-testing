@@ -1,5 +1,5 @@
 FWUPDTOOL=fwupdtool
-IMAGE_URL=https://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/images/Fedora-Server-Guest-Generic-42-1.1.x86_64.qcow2
+IMAGE_URL=https://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/images/Fedora-Server-Guest-Generic-43-1.6.x86_64.qcow2
 IMAGE=$(notdir $(IMAGE_URL))
 
 custom_VARS.fd: custom_VARS.builder.xml
