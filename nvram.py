@@ -182,8 +182,7 @@ Available targets:
     parser.add_argument(
         "target",
         nargs="?",
-        default="build",
-        help="Target to build (default: build)",
+        help="Target to build",
     )
     parser.add_argument(
         "args",
@@ -192,6 +191,10 @@ Available targets:
     )
 
     args = parser.parse_args()
+
+    if args.target is None:
+        parser.print_help()
+        sys.exit(0)
 
     targets = {
         "build": build_custom_vars,
