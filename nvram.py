@@ -7,6 +7,7 @@ import os
 import shutil
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -31,6 +32,23 @@ def run_cmd(cmd: list[str] | str, **kwargs) -> subprocess.CompletedProcess:
 
 def build_custom_vars():
     """Build custom_VARS.fd from custom_VARS.builder.xml."""
+    xml_path = Path("custom_VARS.builder.xml")
+    if not xml_path.exists():
+        print("Error: custom_VARS.builder.xml not found. Are you in the correct directory?", file=sys.stderr)
+        sys.exit(1)
+
+    # Check all referenced files exist
+    tree = ET.parse(xml_path)
+    missing = []
+    for elem in tree.iter("filename"):
+        if elem.text and not Path(elem.text).exists():
+            missing.append(elem.text)
+    if missing:
+        print("Error: missing files referenced in custom_VARS.builder.xml:", file=sys.stderr)
+        for f in missing:
+            print(f"  {f}", file=sys.stderr)
+        sys.exit(1)
+
     run_cmd([FWUPDTOOL, "firmware-build", "custom_VARS.builder.xml", "custom_VARS.fd"])
     shutil.copy("custom_VARS.fd", "custom_VARS.bak")
     print("Built custom_VARS.fd and created backup")
