@@ -73,7 +73,9 @@ def get_reqs():
 
 def run_vm():
     """Run QEMU with the custom firmware."""
-    # Ensure prerequisites are built
+    # Ensure prerequisites are ready
+    if not Path(IMAGE).exists():
+        get_reqs()
     if not Path("custom_VARS.fd").exists():
         build_custom_vars()
 
