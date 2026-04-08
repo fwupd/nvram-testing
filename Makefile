@@ -1,51 +1,56 @@
-FWUPDTOOL=fwupdtool
-IMAGE_URL=https://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/images/Fedora-Server-Guest-Generic-43-1.6.x86_64.qcow2
-IMAGE=$(notdir $(IMAGE_URL))
+# Find all subdirectories that contain a custom_VARS.builder.xml
+SUBDIRS := $(dir $(wildcard */custom_VARS.builder.xml))
 
-custom_VARS.fd: custom_VARS.builder.xml
-	$(FWUPDTOOL) firmware-build custom_VARS.builder.xml custom_VARS.fd
-	cp custom_VARS.fd custom_VARS.bak
+# Targets to forward to subdirectories
+TARGETS := build custom_vars get_reqs run dump extract clean compare
 
-get_reqs:
-	wget -nc -P ../ $(IMAGE_URL)
-	cp ../$(IMAGE) .
-	virt-customize \
-		--add $(IMAGE) \
-		--copy-in ../update-and-shutdown.service:/etc/systemd/system \
-		--link ../update-and-shutdown.service:/etc/systemd/system/basic.target.wants \
-		--link /dev/null:/etc/systemd/system/initial-setup.service \
-		--link /dev/null:/etc/systemd/system/systemd-repart.service \
-		--root-password password:fwupd
-	wget -nc -P ../ https://fwupd.org/downloads/093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab
-	gcab -x ../093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab
+.PHONY: $(TARGETS) $(foreach target,$(TARGETS),$(addprefix $(target)-,$(SUBDIRS)))
 
-run: get_reqs custom_VARS.fd
-	qemu-system-x86_64 \
-		-cpu host -machine type=q35,accel=kvm -m 4G -smp 4 \
-		-nic user,model=virtio \
-		-drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.secboot.fd \
-		-drive if=pflash,format=raw,file=custom_VARS.fd \
-		-vnc :1 \
-		$(IMAGE)
+# Define rules for each target
+define make-target-rule
+$(1):
+	@for dir in $(SUBDIRS); do \
+		echo "==> Entering $$$$dir"; \
+		(cd "$$$$dir" && ../nvram.py $(1)) || exit 1; \
+	done
+endef
 
-dump:
-	dd if=/sys/firmware/efi/efivars/PK-8be4df61-93ca-11d2-aa0d-00e098032b8c of=PK-8be4df61-93ca-11d2-aa0d-00e098032b8c
-	dd if=/sys/firmware/efi/efivars/KEK-8be4df61-93ca-11d2-aa0d-00e098032b8c of=KEK-8be4df61-93ca-11d2-aa0d-00e098032b8c
-	dd if=/sys/firmware/efi/efivars/db-d719b2cb-3d3a-4596-a3bc-dad00e67656f of=db-d719b2cb-3d3a-4596-a3bc-dad00e67656f
-	dd if=/sys/firmware/efi/efivars/dbx-d719b2cb-3d3a-4596-a3bc-dad00e67656f of=dbx-d719b2cb-3d3a-4596-a3bc-dad00e67656f
+$(foreach target,$(TARGETS),$(eval $(call make-target-rule,$(target))))
 
-extract:
-	$(FWUPDTOOL) firmware-extract PK-8be4df61-93ca-11d2-aa0d-00e098032b8c efi-signature-list
-	$(FWUPDTOOL) firmware-extract KEK-8be4df61-93ca-11d2-aa0d-00e098032b8c efi-signature-list
-	$(FWUPDTOOL) firmware-extract db-d719b2cb-3d3a-4596-a3bc-dad00e67656f efi-signature-list
+# Also allow running a specific target in a specific directory
+# e.g., make build-"ASUSTeK - ROG MAXIMUS Z790 HERO/"
+define make-subdir-target-rule
+$(1)-$(2):
+	@echo "==> Entering $(2)"
+	@(cd "$(2)" && ../nvram.py $(1))
+endef
 
-%.siglist: %.builder.xml
-	$(FWUPDTOOL) firmware-build $< $@
+$(foreach target,$(TARGETS),$(foreach subdir,$(SUBDIRS),$(eval $(call make-subdir-target-rule,$(target),$(subdir)))))
 
-clean:
-	rm -f *.siglist *.fd
+# List discovered subdirectories
+list:
+	@echo "Discovered subdirectories:"
+	@for dir in $(SUBDIRS); do echo "  $$dir"; done
 
-compare:
-	$(FWUPDTOOL) firmware-export custom_VARS.bak efi-volume > old.txt
-	$(FWUPDTOOL) firmware-export custom_VARS.fd efi-volume > new.txt
-	diff old.txt new.txt
+# Help target
+help:
+	@echo "Usage: make <target>"
+	@echo ""
+	@echo "Available targets:"
+	@echo "  build       - Build custom_VARS.fd from custom_VARS.builder.xml"
+	@echo "  custom_vars - Alias for build"
+	@echo "  get_reqs    - Download requirements and customize VM image"
+	@echo "  run         - Run QEMU with custom firmware"
+	@echo "  dump        - Dump EFI variables from system"
+	@echo "  extract     - Extract firmware signatures"
+	@echo "  clean       - Remove generated files"
+	@echo "  compare     - Compare old and new firmware"
+	@echo "  list        - List discovered subdirectories"
+	@echo ""
+	@echo "All targets run in all subdirectories with custom_VARS.builder.xml."
+	@echo ""
+	@echo "To run a target in a specific subdirectory:"
+	@echo "  make <target>-\"<subdir>/\""
+	@echo ""
+	@echo "Discovered subdirectories:"
+	@for dir in $(SUBDIRS); do echo "  $$dir"; done
