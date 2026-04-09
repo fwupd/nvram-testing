@@ -15,10 +15,14 @@ from urllib.parse import urlparse
 # Configuration
 FWUPDTOOL = "fwupdtool"
 IMAGE_URL = "https://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/images/Fedora-Server-Guest-Generic-43-1.6.x86_64.qcow2"
-IMAGE = Path(urlparse(IMAGE_URL).path).name
 
 DBX_CAB_URL = "https://fwupd.org/downloads/093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab"
 DBX_CAB = Path(urlparse(DBX_CAB_URL).path).name
+
+
+def image_basename(image_url: str) -> str:
+    """Filename component of the image URL path (e.g. qcow2 name)."""
+    return Path(urlparse(image_url).path).name
 
 
 def run_cmd(cmd: list[str] | str, **kwargs) -> subprocess.CompletedProcess:
@@ -54,24 +58,25 @@ def build_custom_vars():
     print("Built custom_VARS.fd and created backup")
 
 
-def get_reqs():
+def get_reqs(image_url: str = IMAGE_URL):
     """Download requirements and customize the VM image."""
     parent = Path("..")
+    image = image_basename(image_url)
 
     # Download image if not present
-    image_path = parent / IMAGE
+    image_path = parent / image
     if not image_path.exists():
-        run_cmd(["wget", "-nc", "-P", str(parent), IMAGE_URL])
+        run_cmd(["wget", "-nc", "-P", str(parent), image_url])
 
     # Copy image to current directory if needed
-    local_image = Path(IMAGE)
+    local_image = Path(image)
     if not local_image.exists() or (image_path.exists() and image_path.stat().st_mtime > local_image.stat().st_mtime):
-        shutil.copy(image_path, IMAGE)
+        shutil.copy(image_path, image)
 
     # Customize the image
     run_cmd([
         "virt-customize",
-        "--add", IMAGE,
+        "--add", image,
         "--copy-in", "../update-and-shutdown.service:/etc/systemd/system",
         "--link", "../update-and-shutdown.service:/etc/systemd/system/basic.target.wants",
         "--link", "/dev/null:/etc/systemd/system/initial-setup.service",
@@ -89,11 +94,12 @@ def get_reqs():
     print("Requirements ready")
 
 
-def run_vm():
+def run_vm(image_url: str = IMAGE_URL):
     """Run QEMU with the custom firmware."""
+    image = image_basename(image_url)
     # Ensure prerequisites are ready
-    if not Path(IMAGE).exists():
-        get_reqs()
+    if not Path(image).exists():
+        get_reqs(image_url)
     if not Path("custom_VARS.fd").exists():
         build_custom_vars()
 
@@ -107,7 +113,7 @@ def run_vm():
         "-drive", "if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.secboot.fd",
         "-drive", "if=pflash,format=raw,file=custom_VARS.fd",
         "-vnc", ":1",
-        IMAGE,
+        image,
     ])
 
 
@@ -209,6 +215,12 @@ Available targets:
         nargs="*",
         help="Additional arguments (e.g., XML file for siglist target)",
     )
+    parser.add_argument(
+        "--image-url",
+        default=IMAGE_URL,
+        metavar="URL",
+        help="VM disk image URL for get_reqs and run (default: built-in Fedora guest image)",
+    )
 
     args = parser.parse_args()
 
@@ -216,11 +228,12 @@ Available targets:
         parser.print_help()
         sys.exit(0)
 
+    image_url = args.image_url
     targets = {
         "build": build_custom_vars,
         "custom_vars": build_custom_vars,
-        "get_reqs": get_reqs,
-        "run": run_vm,
+        "get_reqs": lambda: get_reqs(image_url),
+        "run": lambda: run_vm(image_url),
         "dump": dump,
         "extract": extract,
         "clean": clean,
