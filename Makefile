@@ -6,7 +6,9 @@ TARGETS := build custom_vars get_reqs run dump extract clean compare
 
 # Optional: passed to nvram.py as --image-url (affects get_reqs, run). Empty = script default.
 IMAGE_URL ?=
-NVRAM_OPTS = $(if $(strip $(IMAGE_URL)),--image-url "$(IMAGE_URL)")
+# Optional: passed to nvram.py as --copy-in (get_reqs only). Empty = omit. Format: hostpath:guestdir (virt-customize).
+COPY_IN ?=
+NVRAM_OPTS = $(strip $(if $(strip $(IMAGE_URL)),--image-url "$(IMAGE_URL)") $(if $(strip $(COPY_IN)),--copy-in "$(COPY_IN)"))
 
 .PHONY: $(TARGETS) $(foreach target,$(TARGETS),$(addprefix $(target)-,$(SUBDIRS)))
 
@@ -43,6 +45,8 @@ help:
 	@echo "Variables:"
 	@echo "  IMAGE_URL   If set, passed to nvram.py as --image-url (for get_reqs and run)."
 	@echo "              Example: make get_reqs IMAGE_URL=https://example.com/disk.qcow2"
+	@echo "  COPY_IN     If set, passed to nvram.py as --copy-in (for get_reqs). hostpath:guestdir"
+	@echo "              Example: make get_reqs COPY_IN=./extra.conf:/etc/"
 	@echo ""
 	@echo "Available targets:"
 	@echo "  build       - Build custom_VARS.fd from custom_VARS.builder.xml"
