@@ -58,7 +58,7 @@ def build_custom_vars():
     print("Built custom_VARS.fd and created backup")
 
 
-def get_reqs(image_url: str = IMAGE_URL):
+def get_reqs(image_url: str = IMAGE_URL, copy_in: str | None = None):
     """Download requirements and customize the VM image."""
     parent = Path("..")
     image = image_basename(image_url)
@@ -74,7 +74,7 @@ def get_reqs(image_url: str = IMAGE_URL):
         shutil.copy(image_path, image)
 
     # Customize the image
-    run_cmd([
+    virt_cmd: list[str] = [
         "virt-customize",
         "--add", image,
         "--copy-in", "../update-and-shutdown.service:/etc/systemd/system",
@@ -82,7 +82,10 @@ def get_reqs(image_url: str = IMAGE_URL):
         "--link", "/dev/null:/etc/systemd/system/initial-setup.service",
         "--link", "/dev/null:/etc/systemd/system/systemd-repart.service",
         "--root-password", "password:fwupd",
-    ])
+    ]
+    if copy_in is not None and copy_in.strip():
+        virt_cmd.extend(["--copy-in", copy_in])
+    run_cmd(virt_cmd)
 
     # Download DBX update CAB
     cab_path = parent / DBX_CAB
@@ -94,12 +97,12 @@ def get_reqs(image_url: str = IMAGE_URL):
     print("Requirements ready")
 
 
-def run_vm(image_url: str = IMAGE_URL):
+def run_vm(image_url: str = IMAGE_URL, copy_in: str | None = None):
     """Run QEMU with the custom firmware."""
     image = image_basename(image_url)
     # Ensure prerequisites are ready
     if not Path(image).exists():
-        get_reqs(image_url)
+        get_reqs(image_url, copy_in)
     if not Path("custom_VARS.fd").exists():
         build_custom_vars()
 
@@ -221,6 +224,12 @@ Available targets:
         metavar="URL",
         help="VM disk image URL for get_reqs and run (default: built-in Fedora guest image)",
     )
+    parser.add_argument(
+        "--copy-in",
+        default=None,
+        metavar="SOURCE:DEST",
+        help="Extra virt-customize --copy-in (host path or dir : guest dir); get_reqs and run when it fetches the image",
+    )
 
     args = parser.parse_args()
 
@@ -229,11 +238,12 @@ Available targets:
         sys.exit(0)
 
     image_url = args.image_url
+    copy_in = args.copy_in
     targets = {
         "build": build_custom_vars,
         "custom_vars": build_custom_vars,
-        "get_reqs": lambda: get_reqs(image_url),
-        "run": lambda: run_vm(image_url),
+        "get_reqs": lambda: get_reqs(image_url, copy_in),
+        "run": lambda: run_vm(image_url, copy_in),
         "dump": dump,
         "extract": extract,
         "clean": clean,
