@@ -38,7 +38,10 @@ def build_custom_vars():
     """Build custom_VARS.fd from custom_VARS.builder.xml."""
     xml_path = Path("custom_VARS.builder.xml")
     if not xml_path.exists():
-        print("Error: custom_VARS.builder.xml not found. Are you in the correct directory?", file=sys.stderr)
+        print(
+            "Error: custom_VARS.builder.xml not found. Are you in the correct directory?",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     # Check all referenced files exist
@@ -48,7 +51,10 @@ def build_custom_vars():
         if elem.text and not Path(elem.text).exists():
             missing.append(elem.text)
     if missing:
-        print("Error: missing files referenced in custom_VARS.builder.xml:", file=sys.stderr)
+        print(
+            "Error: missing files referenced in custom_VARS.builder.xml:",
+            file=sys.stderr,
+        )
         for f in missing:
             print(f"  {f}", file=sys.stderr)
         sys.exit(1)
@@ -70,18 +76,26 @@ def get_reqs(image_url: str = IMAGE_URL, copy_in: str | None = None):
 
     # Copy image to current directory if needed
     local_image = Path(image)
-    if not local_image.exists() or (image_path.exists() and image_path.stat().st_mtime > local_image.stat().st_mtime):
+    if not local_image.exists() or (
+        image_path.exists() and image_path.stat().st_mtime > local_image.stat().st_mtime
+    ):
         shutil.copy(image_path, image)
 
     # Customize the image
     virt_cmd: list[str] = [
         "virt-customize",
-        "--add", image,
-        "--copy-in", "../update-and-shutdown.service:/etc/systemd/system",
-        "--link", "../update-and-shutdown.service:/etc/systemd/system/basic.target.wants",
-        "--link", "/dev/null:/etc/systemd/system/initial-setup.service",
-        "--link", "/dev/null:/etc/systemd/system/systemd-repart.service",
-        "--root-password", "password:fwupd",
+        "--add",
+        image,
+        "--copy-in",
+        "../update-and-shutdown.service:/etc/systemd/system",
+        "--link",
+        "../update-and-shutdown.service:/etc/systemd/system/basic.target.wants",
+        "--link",
+        "/dev/null:/etc/systemd/system/initial-setup.service",
+        "--link",
+        "/dev/null:/etc/systemd/system/systemd-repart.service",
+        "--root-password",
+        "password:fwupd",
     ]
     if copy_in is not None and copy_in.strip():
         virt_cmd.extend(["--copy-in", copy_in])
@@ -106,18 +120,28 @@ def run_vm(image_url: str = IMAGE_URL, copy_in: str | None = None):
     if not Path("custom_VARS.fd").exists():
         build_custom_vars()
 
-    run_cmd([
-        "qemu-system-x86_64",
-        "-cpu", "host",
-        "-machine", "type=q35,accel=kvm",
-        "-m", "4G",
-        "-smp", "4",
-        "-nic", "user,model=virtio",
-        "-drive", "if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.secboot.fd",
-        "-drive", "if=pflash,format=raw,file=custom_VARS.fd",
-        "-vnc", ":1",
-        image,
-    ])
+    run_cmd(
+        [
+            "qemu-system-x86_64",
+            "-cpu",
+            "host",
+            "-machine",
+            "type=q35,accel=kvm",
+            "-m",
+            "4G",
+            "-smp",
+            "4",
+            "-nic",
+            "user,model=virtio",
+            "-drive",
+            "if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.secboot.fd",
+            "-drive",
+            "if=pflash,format=raw,file=custom_VARS.fd",
+            "-vnc",
+            ":1",
+            image,
+        ]
+    )
 
 
 def dump():
@@ -180,8 +204,12 @@ def clean():
 
 def compare():
     """Compare old and new firmware."""
-    run_cmd(f"{FWUPDTOOL} firmware-export custom_VARS.bak efi-volume > old.txt", shell=True)
-    run_cmd(f"{FWUPDTOOL} firmware-export custom_VARS.fd efi-volume > new.txt", shell=True)
+    run_cmd(
+        f"{FWUPDTOOL} firmware-export custom_VARS.bak efi-volume > old.txt", shell=True
+    )
+    run_cmd(
+        f"{FWUPDTOOL} firmware-export custom_VARS.fd efi-volume > new.txt", shell=True
+    )
 
     # diff returns non-zero if files differ, which is expected
     result = subprocess.run(["diff", "old.txt", "new.txt"])
@@ -252,17 +280,20 @@ Available targets:
 
     if args.target == "siglist":
         if not args.args:
-            print("Error: siglist target requires an XML file argument", file=sys.stderr)
+            print(
+                "Error: siglist target requires an XML file argument", file=sys.stderr
+            )
             sys.exit(1)
         build_siglist(args.args[0])
     elif args.target in targets:
         targets[args.target]()
     else:
         print(f"Unknown target: {args.target}", file=sys.stderr)
-        print(f"Available targets: {', '.join(targets.keys())}, siglist", file=sys.stderr)
+        print(
+            f"Available targets: {', '.join(targets.keys())}, siglist", file=sys.stderr
+        )
         sys.exit(1)
 
 
 if __name__ == "__main__":
     main()
-
