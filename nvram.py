@@ -66,7 +66,7 @@ def get_reqs(image_url: str = IMAGE_URL, copy_in: str | None = None):
     # Download image if not present
     image_path = parent / image
     if not image_path.exists():
-        run_cmd(["curl", "-O", "--output-dir", str(parent), image_url])
+        run_cmd(["curl", "-O", "--remote-name", "--output-dir", str(parent), image_url])
 
     # Copy image to current directory if needed
     local_image = Path(image)
