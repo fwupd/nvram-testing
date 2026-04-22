@@ -4,6 +4,7 @@
 import argparse
 import glob
 import os
+import requests
 import shutil
 import subprocess
 import sys
@@ -64,6 +65,19 @@ def build_custom_vars():
     print("Built custom_VARS.fd and created backup")
 
 
+def download_file(url, target_dir):
+    filename = Path(urlparse(url).path.split("/")[-1])
+    fullname = target_dir / filename
+    chsize = 1024*1024
+    with requests.get(url, stream=True) as r:
+        r.raise_for_status()
+        with open(fullname, "wb") as f:
+            for chunk in r.iter_content(chunk_size=chsize):
+                f.write(chunk)
+    assert os.path.isfile(fullname)
+    return fullname
+
+
 def get_reqs(image_url: str = IMAGE_URL, copy_in: str | None = None):
     """Download requirements and customize the VM image."""
     parent = Path("..")
@@ -72,7 +86,7 @@ def get_reqs(image_url: str = IMAGE_URL, copy_in: str | None = None):
     # Download image if not present
     image_path = parent / image
     if not image_path.exists():
-        run_cmd(["curl", "-O", "--remote-name", "--output-dir", str(parent), image_url])
+        download_file(image_url, parent)
 
     # Copy image to current directory if needed
     local_image = Path(image)
@@ -104,7 +118,7 @@ def get_reqs(image_url: str = IMAGE_URL, copy_in: str | None = None):
     # Download DBX update CAB
     cab_path = parent / DBX_CAB
     if not cab_path.exists():
-        run_cmd(["wget", "-nc", "-P", str(parent), DBX_CAB_URL])
+        download_file(DBX_CAB_URL, str(parent))
 
     # Extract CAB
     run_cmd(["gcab", "-x", str(cab_path)])
