@@ -15,7 +15,7 @@ from urllib.parse import urlparse
 
 # Configuration
 FWUPDTOOL = "fwupdtool"
-IMAGE_URL = "https://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/images/Fedora-Server-Guest-Generic-43-1.6.x86_64.qcow2"
+IMAGE_URL = "https://download.fedoraproject.org/pub/fedora/linux/releases/44/Server/x86_64/images/Fedora-Server-Guest-Generic-44-1.7.x86_64.qcow2"
 
 DBX_CAB_URL = "https://fwupd.org/downloads/093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab"
 DBX_CAB = Path(urlparse(DBX_CAB_URL).path).name
