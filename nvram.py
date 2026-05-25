@@ -78,7 +78,7 @@ def download_file(url, target_dir):
     return fullname
 
 
-def get_reqs(image_url: str = IMAGE_URL, copy_in: str | None = None):
+def get_reqs(image_url: str = IMAGE_URL, copy_in: str | None = None, update_pkgs: bool = False):
     """Download requirements and customize the VM image."""
     parent = Path("..")
     image = image_basename(image_url)
@@ -113,6 +113,8 @@ def get_reqs(image_url: str = IMAGE_URL, copy_in: str | None = None):
     ]
     if copy_in is not None and copy_in.strip():
         virt_cmd.extend(["--copy-in", copy_in])
+    if update_pkgs:
+        virt_cmd.append("--update")
     run_cmd(virt_cmd)
 
     # Download DBX update CAB
@@ -272,6 +274,12 @@ Available targets:
         metavar="SOURCE:DEST",
         help="Extra virt-customize --copy-in (host path or dir : guest dir); get_reqs and run when it fetches the image",
     )
+    parser.add_argument(
+        "--update-pkgs",
+        action="store_true",
+        default=False,
+        help="Pass --update to virt-customize to update guest packages (get_reqs only)",
+    )
 
     args = parser.parse_args()
 
@@ -281,10 +289,11 @@ Available targets:
 
     image_url = args.image_url
     copy_in = args.copy_in
+    update_pkgs = args.update_pkgs
     targets = {
         "build": build_custom_vars,
         "custom_vars": build_custom_vars,
-        "get_reqs": lambda: get_reqs(image_url, copy_in),
+        "get_reqs": lambda: get_reqs(image_url, copy_in, update_pkgs),
         "run": lambda: run_vm(image_url, copy_in),
         "dump": dump,
         "extract": extract,
