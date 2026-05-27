@@ -12,7 +12,7 @@ for I in "${!DIRS[@]}"; do
     DIR="${DIRS[I]%%/}"
     pushd "$DIR"
         # per-directory test prereqs
-        ../nvram.py get_reqs "$@"
+        ../get-reqs.py "$@"
         ../nvram.py extract
 
         # test itself
