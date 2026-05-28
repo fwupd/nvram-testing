@@ -12,11 +12,11 @@ for I in "${!DIRS[@]}"; do
     DIR="${DIRS[I]%%/}"
     pushd "$DIR"
         # per-directory test prereqs
-        ../get-reqs.py "$@"
         ../nvram.py extract
+        ../nvram.py build
 
         # test itself
-        ../nvram.py run "$@"
+        ../nvram.py run --image "$IMAGE"
         if [[ "$?" -eq 0 ]]; then
             RES+=( "PASS: ${DIR}" )
         else
