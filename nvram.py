@@ -9,6 +9,8 @@ import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from urllib.parse import urlparse
+from lxml import etree
 
 
 # Configuration
@@ -141,21 +143,57 @@ def clean():
         print("Nothing to clean")
 
 
+def _filter_xml(fn_old: str, fn_new: str) -> None:
+
+    with open(fn_old, "rb") as f:
+        xml = f.read().decode()
+    out_root = etree.Element("firmware", gtype="FuEfiVolume")
+    out_varstore = etree.SubElement(out_root, "firmware", gtype="FuEfiVss2VariableStore")
+    out_authvariable = etree.SubElement(out_varstore, "firmware", gtype="FuEfiVssAuthVariable")
+    root = etree.fromstring(xml)
+    for var in root.xpath(
+        "/firmware[@gtype='FuEfiVolume']"
+        "/firmware[@gtype='FuEfiVss2VariableStore']"
+        "/firmware[@gtype='FuEfiVssAuthVariable']"
+    ):
+        variable: str = var.xpath("id")[0].text
+        if variable not in ["db", "dbx", "KEK", "PK"]:
+            continue
+        etree.SubElement(out_authvariable, "id", id=variable)
+        for certlist in var.xpath("firmware[@gtype='FuEfiSignatureList']"):
+            for cert in certlist.xpath(
+                "firmware[@gtype='FuEfiX509Signature']"
+            ):
+                ele_cert = etree.SubElement(out_authvariable, "firmware", gtype="FuEfiX509Signature")
+                for key in ["id", "issuer", "subject"]:
+                    etree.SubElement(ele_cert, key).text = cert.xpath(key)[0].text
+                continue
+            for cert in certlist.xpath(
+                "firmware[@gtype='FuEfiSignature']"
+            ):
+                ele_cert = etree.SubElement(out_authvariable, "firmware", gtype="FuEfiSignature")
+                for key in ["owner"]:
+                    etree.SubElement(ele_cert, key).text = cert.xpath(key)[0].text
+                continue
+    with open(fn_new, "wb") as f:
+        f.write(etree.tostring(out_root, pretty_print=True))
+
 def compare():
     """Compare old and new firmware."""
     run_cmd(
-        f"{FWUPDTOOL} firmware-export custom_VARS.bak efi-volume > old.txt", shell=True
-    )
-    run_cmd(
-        f"{FWUPDTOOL} firmware-export custom_VARS.fd efi-volume > new.txt", shell=True
+        f"{FWUPDTOOL} firmware-export custom_VARS.fd efi-volume --json > raw.xml", shell=True
     )
 
+    # lets filter this down to only the important stuff
+    _filter_xml("raw.xml", "new.xml");
+
     # diff returns non-zero if files differ, which is expected
-    result = subprocess.run(["diff", "old.txt", "new.txt"])
+    result = subprocess.run(["diff", "aim.xml", "new.xml"])
     if result.returncode == 0:
         print("No differences found")
     else:
         print("Differences shown above")
+        sys.exit(1)
 
 
 def main():
