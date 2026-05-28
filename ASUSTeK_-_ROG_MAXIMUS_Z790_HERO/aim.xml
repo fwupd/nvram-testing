@@ -1,0 +1,995 @@
+<firmware gtype="FuEfiVolume">
+  <firmware gtype="FuEfiVss2VariableStore">
+    <firmware gtype="FuEfiVssAuthVariable">
+      <id id="KEK"/>
+      <firmware gtype="FuEfiX509Signature">
+        <id>9f402b1cc0243cbedc58a525789816ccca7687a9</id>
+        <issuer>C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Corporation Third Party Marketplace Root</issuer>
+        <subject>C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Corporation KEK CA 2011</subject>
+      </firmware>
+      <firmware gtype="FuEfiX509Signature">
+        <id>b207ca37ca736afd9836d12d447e02484f161578</id>
+        <issuer>CN=ASUSTeK MotherBoard KEK Certificate</issuer>
+        <subject>CN=ASUSTeK MotherBoard KEK Certificate</subject>
+      </firmware>
+      <firmware gtype="FuEfiX509Signature">
+        <id>dec64d7746d983db3774829a00bf829d9f19e9cf</id>
+        <issuer>C=US,O=Microsoft Corporation,CN=Microsoft RSA Devices Root CA 2021</issuer>
+        <subject>C=US,O=Microsoft Corporation,CN=Microsoft Corporation KEK 2K CA 2023</subject>
+      </firmware>
+      <id id="PK"/>
+      <firmware gtype="FuEfiX509Signature">
+        <id>0dca64d8da495ecdd0f5570a8c3bc61192652c31</id>
+        <issuer>CN=ASUSTeK MotherBoard PK Certificate</issuer>
+        <subject>CN=ASUSTeK MotherBoard PK Certificate</subject>
+      </firmware>
+      <id id="db"/>
+      <firmware gtype="FuEfiX509Signature">
+        <id>e30cf09dabeab32a6e3b07a7135245de05ffb658</id>
+        <issuer>C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Corporation Third Party Marketplace Root</issuer>
+        <subject>C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Corporation UEFI CA 2011</subject>
+      </firmware>
+      <firmware gtype="FuEfiX509Signature">
+        <id>1a8b6903d64cc9ad09d12fcb355663a458a09ef0</id>
+        <issuer>C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Root Certificate Authority 2010</issuer>
+        <subject>C=US,ST=Washington,L=Redmond,O=Microsoft Corporation,CN=Microsoft Windows Production PCA 2011</subject>
+      </firmware>
+      <firmware gtype="FuEfiX509Signature">
+        <id>7cd7437c555f89e7c2b50e21937e420c4e583e80</id>
+        <issuer>C=US,O=Microsoft Corporation,CN=Microsoft RSA Devices Root CA 2021</issuer>
+        <subject>C=US,O=Microsoft Corporation,CN=Microsoft UEFI CA 2023</subject>
+      </firmware>
+      <firmware gtype="FuEfiX509Signature">
+        <id>f45b559fc1c60f31b3071021298d5ed7d77280b0</id>
+        <issuer>C=US,O=Microsoft Corporation,CN=Microsoft RSA Devices Root CA 2021</issuer>
+        <subject>C=US,O=Microsoft Corporation,CN=Microsoft Option ROM UEFI CA 2023</subject>
+      </firmware>
+      <id id="dbx"/>
+      <firmware gtype="FuEfiSignature">
+        <owner>00000000-0000-0000-0000-000000000000</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>7d34a98a-5637-a765-3082-0cdd02010131</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>058230f0-3000-0382-e8a0-030201020213</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>81300005-3180-300b-0906-035504061302</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>65520713-6d64-6e6f-6431-1e301c060355</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>21130304-694d-7263-6f73-6f667420436f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>34323539-5a30-0d17-3234-313031363139</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>68736157-6e69-7467-6f6e-3110300e0603</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>726f4320-6f70-6172-7469-6f6e3130302e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>78452079-6863-6e61-6765-204b65793082</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b19f6175-868e-7fbb-0278-389700134379</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>7a6a52de-90de-9861-d03b-e0816d2deeea</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ceaad549-b9f5-ffe5-2906-8eedaf4a07f8</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>803b846d-4507-468f-acc9-a7576e94007d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>2847cb7b-69e8-d234-2cdd-8c7a2ac3e1f3</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>9d43d72a-467b-45b4-b7f9-55464f4a1d02</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>1d30014f-0306-1d55-0e04-1604144cdc34</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>1c301e31-0306-0455-0b13-154d6963726f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>30352b31-3631-3733-301f-0603551d2304</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>4d304f04-4b30-49a0-a047-864568747470</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>4363694d-726f-454b-4b43-41323031315f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>06503052-2b08-0106-0505-073002864468</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>73747265-4d2f-6369-436f-724b454b4341</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>060d3000-2a09-4886-86f7-0d01010b0500</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>f6fb73e9-72f9-6648-6461-1cbca4cd24c3</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>db79313f-e3fe-cb0c-3bc5-7410c201dddc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>c2530e11-5677-df6e-548c-3ef8e6d20f0b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>3d9e1d72-2ea0-b3f2-1504-62cc8621bbaa</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ad00f45d-e20d-ca76-bc66-f8a9d2735e37</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>0a020201-0a61-88d1-0000-00000003300d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>55030611-0804-0a13-5761-7368696e6774</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6f726369-6f73-7466-2043-6f72706f7261</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6e6f6974-5420-6968-7264-205061727479</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>0d175a39-3632-3630-3234-323035313239</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>74676e69-6e6f-1031-300e-060355040713</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>61726f70-6974-6e6f-312a-302806035504</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>31313032-8230-2201-300d-06092a864886</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>57fbe7ea-447a-5d02-070d-da4ae5742ae6</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>91b7f5e7-09d6-e2e1-c004-a8ac301cdf48</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>25e2b943-fefd-f905-d4c4-14ab11e22389</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>1143fb4a-0b12-b57e-4792-6cdce60489eb</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e43d79d2-659b-cc3b-292a-9ffc7259a2eb</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>8f69077b-0215-0103-0001-a382014f3082</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>a0cd43fc-a43e-67cb-12d2-5bd955ac7bcc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>1d550306-040f-0304-0201-86300f060355</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>4ed6bf11-239e-0855-3b3a-226aa8305c06</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>74666f73-632e-6d6f-2f70-6b692f63726c</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>30312d30-302d-2e35-6372-6c306006082b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>2e777777-696d-7263-6f73-6f66742e636f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>2d303130-3031-302d-352e-637274300d06</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>d1a0d70c-e8f1-6652-a8ee-a2b5757a9000</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>c857d60c-a319-055f-d6db-c6d069ce484b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>96d70f90-e51f-94e7-1fb2-2a0c8d4bff28</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e50f3996-565e-18d8-0596-f407a642b3a0</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>eb84873c-cee3-43bd-e5ad-2d84938e6a2b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>a47cace7-82c1-4e87-38b1-2f0dc514876f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>fdbc0dcb-9200-f44f-753b-a7a924fc5041</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>da613637-694a-341b-d868-edd602cf6c94</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>c1ca4b14-4bd8-7deb-3f57-35b2e64f75b4</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>1cb2a2eb-a25d-b816-87c5-e91bf6b59725</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>99b51ba0-f360-b05c-c557-4e36d23284bf</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>06113013-5503-0804-130a-57617368696e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>63694d15-6f72-6f73-6674-20436f72706f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>69746172-6e6f-4b20-454b-204341203230</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>01020403-0005-0d30-0609-2a864886f70d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>a6aea84a-6d3c-7825-0c7a-d64702677b4c</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>3fe3b210-7099-653f-8731-db8a2f3bf285</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>fa104e65-ead6-782b-2beb-3407a032f90a</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>9e0758de-22b8-a66b-e85a-42deb52cd4fe</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>29f4e5fc-901b-808b-86cf-09ef980d77df</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>41a9ac40-36f9-4393-280c-2e0000000000</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>4fd1191e-a41d-e652-6db2-408ca8604d41</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e4db2428-4503-d234-5b85-07246b3b957d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>2e7f6f2a-8773-3e0d-64f7-2c4e08ef6779</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>968171be-3052-0d21-62d6-d33c48999c6b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>f5ce836d-aef4-b708-1039-79ed8932742d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>a010255f-3fdf-4ce4-58c9-5e0ab8048729</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>77ae25dc-9fe1-6f5d-09cd-09eeb2509922</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>bb7ca28d-0765-a02c-3a7b-6b257dbdcbbd</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>33ff7dbf-a3c6-dd2a-869f-6013fe162e2c</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>60a86eed-ef7c-fa3c-e1ba-fe1165755cf2</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>db32680c-d2b2-e009-2725-27dfb63d49d2</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b773824b-a4cb-3eb0-f2e9-eb20e0a02916</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>1b55d692-0c71-2ad7-ada3-d77be54609e4</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>771dd1eb-b423-eaf5-0e35-7907d5443dec</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>11e377b7-e803-db40-a680-634aa806f5c9</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6489fce6-2866-ccff-7c7a-42cae512337d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>58aeecf6-e8af-6a47-280a-2026fc71f621</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>42fffc8d-4f04-d0cb-aece-32fc7011a83e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>cde39509-c0fd-7105-b184-9854847a44dc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ebe20d03-54de-0535-4c35-a998605b8fcf</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>249f0793-6bb6-65a4-07e3-5e911db0362a</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b107660a-a644-a15b-1fb6-579df94b8eb2</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>300f85e0-cda0-7712-462a-2192590fb05b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>88bc4a30-7e82-00bc-f80c-b9c7e197cdbc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>5ef7982e-995e-6c1e-186e-934f7b2b2e6b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>4b9a8ddd-7ac5-7191-2657-3817fb5fcb2d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>56350b46-afaa-a777-0d6b-8dc484c9301d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6fa8a703-ff3d-9f96-8488-15c0574b12c2</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>bf028f36-9270-0a38-3c23-ca91fd7f1943</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6fe59571-8073-127d-3adc-f8f6e7bf2d4d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>d9beec55-b140-f2a5-569a-ed92956137ae</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>aca8d310-cca2-20a4-8888-e2059f8a06cb</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>76c042f3-c1c2-346f-13f4-d2df50d181ca</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>12fd62ea-e417-0b29-145c-9e5c3695a31b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>4eb3c15c-9834-044c-ae97-65322c3cb049</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e260deb9-a1ec-51c4-0034-e290bbb36cf6</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>55185063-9228-45e9-626f-115fc9ca07ac</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>c4e422fb-2138-1ee3-210c-f52d1d4f74dd</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>7a6b4da6-d909-3006-8a1a-65eb5240e3c4</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>694a8b0b-7a49-658c-ecbc-2a55e0bb420e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>77bab85e-acd1-83d2-c43f-4a57603cc113</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>bab47851-a2f5-f057-6e15-9121a67c595f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>fe71138e-962b-0f91-e407-216fd9542867</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>f0c427b9-dc5f-595c-3a37-66db984c5e43</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>eeea93dd-9412-9a15-bf45-b4c2c72d7dc7</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e12db373-4d1b-ebe1-2eab-211afd2d9c31</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>813729a5-4bd8-1a5a-c24f-88266b5270e7</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>faa072d3-f547-6fc2-57a3-59be7b27801e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>0476c093-cda7-61a9-29d8-a8fd68d2b6af</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>1a2c0b93-e15e-e84c-e1c8-304ae495adc5</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>d5b39da5-9d7e-852b-d7d7-640434ec75ba</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>69e95ede-c01d-eeea-2a31-c38b1491a814</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>42bc3129-16e6-d33c-0ff6-49cca7e87252</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>48b9114c-6b5a-e61c-4362-b0edb4441ccc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>438d7eba-2553-2b9d-7e5e-72b5096eff80</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ee56fc23-4172-174a-f350-d0cea6c26a35</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ebf9d417-2868-7cb9-41cb-9ba6d3dc1fcc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>a7090b5e-0c37-0ccf-d9ce-6bcf8e640c21</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b59a84d7-71c1-b82a-4f02-349478ec2a38</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>efde5823-187c-2ce5-c05f-bb7fc76776e6</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6a516215-7eb0-9b97-2c6c-efe2ab70c6df</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>eea83871-52bc-2d96-2847-f16e3587163b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>877ea79b-6fec-6c59-4913-50fb8f8bba80</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>4fb56d24-b4c7-7f3e-596a-353309b9c36b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>428286a8-2c6b-9efe-6aa4-f27253eab400</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>636559d2-edcd-871d-4096-aacc18106993</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>971e25b6-2bcd-346f-d36a-f59330f11d02</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>7fff0fce-8685-b49e-2233-0dc04b314c0f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>62bd2378-e61c-df55-ae54-fa2bfa72fdc0</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>3a975f1e-34f7-0ed9-f317-e33f5db1573c</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ae0eba45-3481-8686-01ba-0d35ff3d9865</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b8ebe4aa-f8df-7dde-080d-825b8839ff17</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>145c6984-6b9c-0004-22ac-7b5b89cbd728</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b07b2ee9-f8e4-f35c-4bf8-48fdf636c0c1</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>d6683d1a-30ec-bed9-d94c-bcb87f19ddc1</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>a194b993-1519-ee3e-ac54-ef892fc447bb</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>bf9dcbdd-1e2c-5ced-11f8-3b2210cf9c6e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>a90c30af-d6df-1cb9-d227-0ee0e2a34958</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>0a6fa931-cf0a-02de-6189-53e695c9ef2e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6c6a8847-f2df-e617-b1ba-910bff85dc7a</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>213b9011-e837-9ba4-6f85-9d0af159ed6a</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>9ee4f5cc-da78-af51-9955-c0b8fa760637</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>a633d215-3dcf-7f05-b3c7-e213e897beef</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>62421f98-d22d-bc51-a1fb-e6b901c52ec1</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>678469c7-9988-4116-d1f6-cf09514ca102</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>847a64bb-3d3c-2143-e35d-bc44dce8c837</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>01bda601-ff3a-301d-570f-83e7592f421d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>9a5f2ba2-750a-ca70-5c93-a74d478a793d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e584f357-de32-f50c-1a01-9a446b01efb3</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>7a027407-b45d-485a-b2a7-29410908b641</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b1cd13c6-64df-7f8a-5873-6fbf57d05d6f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e6311313-da51-2e5b-2f17-0f5daef4153d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>edf831af-8988-6454-2553-74ef097a82d7</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>3a7ec863-3365-a0ee-f6f0-a1a23f1fc445</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>705902df-cee2-6fd6-f622-ee019cd0ed7f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>bf3470e3-d597-6ebc-0615-e23a1cdfbae6</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>104b0b98-b6c4-e228-3dbe-24b6e96c128a</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ca73df52-c90d-d232-9f17-997481c56f30</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e627395d-4aed-195d-40c5-e7cd4dac88f5</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>aa7759ff-6783-9943-9781-1a62ff212c94</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>a5fcfb74-4d20-e2e3-8b88-1313bb1d1ecc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>91ba1670-5f75-e0e9-ec1f-415030942e5a</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>c1d9b1fe-3225-e94e-0aec-39c258880134</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>74aec61b-148d-051e-d3eb-cfb65d9041b2</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>94ecf5a8-28d8-7164-5609-7f99357a581e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>3ec73d67-df92-ab15-7d51-dc715627ae77</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ae2c8017-f0b4-239e-a339-4c4acc6e87e8</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b855c993-44c7-a2f0-b75c-311f495e1890</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>4d5914fc-90ee-d62b-082e-f1a30a0b9b50</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>f32e74e8-d730-66a2-99f4-59478cf22c2b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>23486313-0732-9732-d868-f29058916529</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e14b46dc-852a-52fa-80b6-f524d4a1c3fc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>20601488-72e1-76b1-d5ab-57d4c89f0f60</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e4483226-d6e2-a557-c848-8d880cb65b01</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>638dc4ac-b8eb-abfa-fd76-4dcbe82f3ba9</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>585d9a9c-7e66-8886-2cf6-c8c9d58967a4</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>8955298e-8a12-1c1f-e558-85d20d89c27b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>3580f4f1-9d95-45ad-3c0e-623af0fe7bf2</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ac2c51c6-9a90-fd75-437a-e1e4d2292980</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>154eda05-47ba-c42d-c6cd-4972fc1a035d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>82f548ab-e968-a643-70d3-5ca5e2bdcd3e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>914b41ca-a0f6-1917-1f6c-40a86b6f3ef3</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>9b425fbd-4da1-e004-8b48-c3ee8d76930a</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e0639975-6bef-e436-2057-fd73046e6bd0</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>85b13ae0-a303-3c40-f6a9-04a479a4db05</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>abc4a29c-1834-c3ed-3a45-a50d2521a3b5</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>2e59b9f8-a5c2-fbad-12ea-7bad146a35ec</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6fa095a0-f618-abb1-a5b8-73b0d5f3a0ee</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>495333bf-b748-b86b-0376-dfdc58b1fed7</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>56d8e37b-ebad-c797-290e-b0665a3d473a</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>fcfc2cc1-251f-7968-3f6e-779e04795e6d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>1d56b06d-8ac9-1653-f22f-ef1090fb8d0b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>03d4bb66-4a4f-37e5-a42f-dfef35161c53</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>70c11caf-292a-81f0-b4f6-fdf6a2b2135c</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>477381fc-775b-abe5-f392-f76b7c76fa3f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>031e7024-4c6f-fb03-7fcd-67a6c566ed94</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b3f5a972-8baf-6e6f-727b-68bb0d91385c</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>d18b6bc7-3909-65a0-d1f3-4e75b8a3065e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>881df2fd-2140-83ad-6ca6-8adf2cbb7995</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>05177e52-186a-3cce-276f-d26e34901a1b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>a4ba6eb3-9641-0816-e8d2-fa80dca8c138</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>be8a7ece-e1ec-9f07-1a6d-ef0a789591cb</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>87031070-cbce-83fb-0525-bbf9d0b70c79</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>fa074b1d-67f8-660d-0994-488fe54b1fbf</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>dbbde4b5-24f7-8152-3b69-73229ab92aa1</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>039086ff-08d2-6993-acf2-c89608f8afa7</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b69c0828-e1ab-c896-f4b3-96c7e4bbc395</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>fabe7cbd-14ac-c5b8-ee73-97fe2cc85984</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>05f66a0e-958f-2c22-0461-57b8c4c1b9c2</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>289e8488-ab45-6f32-6f7f-e74e0e539b7e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>66ce82ce-c16f-5b14-9fcb-fd2b07bad0a8</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ec9732f4-d232-a7d9-6f7b-e66114c6a13e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>08d6f546-4717-79d7-bada-7768e649d047</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>00df10e4-29bb-90a2-e002-1516ae3b8a23</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>62991f36-3baf-991e-9131-e30bb7fd0754</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ef91c2ad-c5a8-429f-0ca5-dcb23e0b5a06</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>2968ca40-f459-5cf3-2ce0-eab8fd64f7ac</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>d8a21d7c-cba9-70e2-597d-32badf8fd66b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>0aa6be2c-2195-aede-67db-25425b7d3ace</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b404c663-969d-0384-22e1-922d5606a9b0</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6ce67071-e6aa-bc70-e71b-8f92d38280c5</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b82b8a31-37aa-3197-1261-160a8e30558b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>31022535-ab75-6112-b1de-21064d6bf247</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>c0f45bb3-8be6-19d3-b577-b9abe1a9cff1</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>82348fb8-c3a5-4ef6-67e5-a714ba1da8a7</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6a4d4848-c37e-4e51-176f-5ca6bdeed7a0</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>4e5f3dc7-5c98-0fac-f3fc-b0c24e441491</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6de2fd54-24ed-a33b-e18d-e7c6d211902a</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>1bd19a3a-0a5a-8b4d-ba44-38ab96e276cc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b4dad646-4712-d126-36fc-2492efd01bfe</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6afb1d25-4f42-e500-35ac-4df61ec19745</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>4b2f7076-8016-cf87-c4ec-65494d6ca8ab</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>dfea95fa-1bdf-b0f8-cbb5-8a7d3939c9f1</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>d37534d9-579a-7265-baff-75612c321b46</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ca553566-d4f0-cef1-2674-64d0452c2361</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>04900782-de87-0a93-abcc-1d196fa455fb</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>7054f410-3718-6aac-f304-a03ec06b3027</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>f002f8aa-da94-b6ce-82f4-e92783b2bb3f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>9465399b-3074-7b84-e125-f7aeb71d91a1</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>f92c5598-f3e0-f7c1-1bc6-2dfa63b9f25b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>9b21095c-1362-b679-4da3-d1b2e34adf4b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>f3240e66-7f02-e7b8-064f-ab33770e93fa</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>86630bd0-2777-1a84-ba50-05149070ee24</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>108518f1-6ea3-af54-d56e-967387ea7d0b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>9b89bfef-5930-b3cb-13a4-8b82fa9c8d93</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6355a408-85ea-22bb-4c1a-d96dec0e96c0</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>be5f2d3b-e221-771f-c161-7a2c08812f57</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>2f08a54f-0e9f-a40d-80f0-5198c66814b7</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>8856bfa4-1e5e-55fd-a8e9-ce3c5f486944</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>9690ba4a-9b96-010a-97b6-14031e4c64a5</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b47fd103-a4fb-f5f8-076c-f1f9b8d6d9b8</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>2d3e6621-e323-aec1-9ce4-b5de0d58a297</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>848e6e9d-6868-e9a1-9a54-b14aa5d0689f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>5c6323c6-01e1-82bd-617f-c400d4150f0a</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>911eaf47-224a-058c-d622-ceda03b7a4f6</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ac4cc5e1-d229-cd9d-7b90-40389e7157bb</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e1514b64-a0c8-48a0-2729-92c738513ebc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>15f8b5e1-cc47-fb9b-e69b-51817068ecb5</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>267be1bf-ad72-bd2f-d119-f27bec789417</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ed5dcae8-9a28-93d7-ab3b-6919d163c875</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>f3634438-2bb0-a65a-25a5-c320fc4fe7d9</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>368969c0-9a34-e304-db69-1e178419fba7</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>1cad00c9-1cab-e85b-6537-f27212e8c291</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>78a338f7-29e6-3848-74b6-dbd67e0d8c33</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>83be473c-65b6-6c07-6eb4-b230b3cee91e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>75f635c3-0754-f650-1111-0a5d2d67b451</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>420f6517-d6e7-fc9e-0098-c22a4989c799</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>91fdd726-520e-c95a-e678-4d54d8316e00</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>67b3de4f-2c62-f811-09c4-cf2d215d8344</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>370c2b63-949b-9b20-068e-da8945951f12</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>3744e3b3-2588-e014-ffc9-bcee122227c3</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b8d3a53c-bd63-2313-d2f1-18f83d9db2b2</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>2a6bd00d-54df-b6b1-e951-12fc60db610c</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>25411402-56c9-4f6d-c7c6-74ee5a6e3246</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>ac7e7a53-8ab9-10ec-ed2b-40209c0f50dc</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>331c85c2-3c46-5c85-10ad-226a11bbfdc8</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>8b36c2da-28d8-9f78-4221-4f5707a932e5</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>dc6926d3-2ace-5ebe-697c-67b7c4328a89</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>91dcf4bb-c668-e706-1e80-95e7d50215b0</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>b46b3983-a91b-65d4-9460-6174b7fbca3c</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>423adc99-cd54-18e5-1391-69c4bd160797</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>676afacb-9c44-3fc6-6e6e-9bd0be6b20ee</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>85b01939-f42b-314a-bc06-00d188c535d8</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>39cdd664-dd1f-0965-fc13-8ccde16512ef</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>835a090a-6b9d-40bc-d5ad-23f55b9f8560</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e94d60b5-e8ea-5ac8-bdb6-21b5b55d25cd</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>98cf55b9-d19b-8f93-02dc-57e371fb07eb</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>40988751-8245-60ff-1e67-ea9c542c7896</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>d837bbc4-647e-91f8-53ef-26b4cff41834</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>44068f55-57dc-2ed3-9ceb-79d6e54d9d64</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>f86188d5-e8d7-4371-ba9c-742e2e2819e3</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>e46ed9a0-8138-a381-c659-3083ae57c5df</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>261fa3e9-e8c2-ce87-91b4-1e5268ee795b</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>83b887af-c120-d715-711e-a645ba6742e8</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>fd7e2c6d-8e95-79c0-aa02-9478baba9aa9</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>9540d0fd-c23c-3f2f-362e-7b71423ff70e</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>3476b851-9818-7781-41ad-e85156cf54bd</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>d12782d8-40e6-dcc0-5973-9bd5b3ca17df</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>5ba4575a-6828-acd8-b1ce-616d8aeef08d</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>6572ed0d-214d-e7a9-7dee-c49fefb45994</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>72eebe20-924b-4714-74dc-095a22ee5d8f</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>76487df4-0954-8789-2ec3-9d08daf56352</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>77f3b1e5-be23-ba29-47cc-ddf07fdee604</owner>
+      </firmware>
+      <firmware gtype="FuEfiSignature">
+        <owner>7971987e-8482-63a0-97d4-c8687dfdafd0</owner>
+      </firmware>
+    </firmware>
+  </firmware>
+</firmware>
