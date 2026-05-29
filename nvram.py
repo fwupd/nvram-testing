@@ -195,6 +195,11 @@ def compare():
         print("Differences shown above")
         sys.exit(1)
 
+def simplify():
+
+    """Simplify the XML to only the interesting parts."""
+    _filter_xml("raw.xml", "aim.xml");
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -247,6 +252,7 @@ Available targets:
         "extract": extract,
         "clean": clean,
         "compare": compare,
+        "simplify": simplify,
     }
 
     if args.target == "siglist":
