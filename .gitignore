@@ -6,5 +6,6 @@
 *.bin
 *.fw
 *.txt
+*.claude/
 *.vscode/
 raw.xml
