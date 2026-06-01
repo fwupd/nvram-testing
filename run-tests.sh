@@ -24,11 +24,11 @@ for I in "${!DIRS[@]}"; do
             ((FAILED++))
         fi
     popd
-
-    printf "%s\n" "${RES[@]}"
-    if [[ "${FAILED}" -gt 0 ]]; then
-        exit 1
-    else
-        echo "all good!" >&2
-    fi
 done
+
+printf "%s\n" "${RES[@]}"
+if [[ "${FAILED}" -gt 0 ]]; then
+    exit 1
+else
+    echo "all good!" >&2
+fi
