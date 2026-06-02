@@ -24,12 +24,17 @@ def read_file(path: str | os.PathLike):
 
 
 def run_cmd(cmd: list[str] | str, **kwargs) -> subprocess.CompletedProcess:
-    """Run a command and print it first."""
-    if isinstance(cmd, list):
-        print(f"+ {' '.join(cmd)}")
-    else:
-        print(f"+ {cmd}")
-    return subprocess.run(cmd, check=True, **kwargs)
+    """Run a command"""
+    return subprocess.run(cmd, check=True, capture_output=True, **kwargs)
+
+
+def check_cmd(cmd: list[str] | str, **kwargs) -> subprocess.CompletedProcess:
+    """Run a command, print nothing if successful, exit with error if failed"""
+    ret = run_cmd(cmd)
+    if ret.returncode != 0:
+        msg = "\n".join([f"command failed: {cmd}", f"command error:", ret.stderr])
+        sys.stderr.write(msg)
+        sys.exit(ret.returncode)
 
 
 def build_custom_vars():
@@ -57,7 +62,8 @@ def build_custom_vars():
             print(f"  {f}", file=sys.stderr)
         sys.exit(1)
 
-    run_cmd([FWUPDTOOL, "firmware-build", "custom_VARS.builder.xml", "custom_VARS.fd"])
+    cmd = [FWUPDTOOL, "firmware-build", "custom_VARS.builder.xml", "custom_VARS.fd"]
+    check_cmd(cmd)
     shutil.copy("custom_VARS.fd", "custom_VARS.bak")
     print("Built custom_VARS.fd and created backup")
 
@@ -67,7 +73,7 @@ def run_vm(image: str):
     if not Path("custom_VARS.fd").exists():
         build_custom_vars()
 
-    run_cmd(
+    check_cmd(
         [
             "qemu-system-x86_64",
             "-cpu",
@@ -130,7 +136,7 @@ def extract():
     ]
 
     for var in vars_to_extract:
-        run_cmd([FWUPDTOOL, "firmware-extract", var, "efi-signature-list"])
+        check_cmd([FWUPDTOOL, "firmware-extract", var, "efi-signature-list"])
 
     print("Firmware extracted")
 
@@ -142,7 +148,7 @@ def build_siglist(xml_file: str):
         sys.exit(1)
 
     siglist = xml_file.replace(".builder.xml", ".siglist")
-    run_cmd([FWUPDTOOL, "firmware-build", xml_file, siglist])
+    check_cmd([FWUPDTOOL, "firmware-build", xml_file, siglist])
     print(f"Built {siglist}")
 
 
