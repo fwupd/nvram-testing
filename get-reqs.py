@@ -61,7 +61,7 @@ def get_reqs(
         "--add",
         image,
         "--copy-in",
-        "../update-and-shutdown.service:/etc/systemd/system",
+        "update-and-shutdown.service:/etc/systemd/system",
         "--link",
         "update-and-shutdown.service:/etc/systemd/system/basic.target.wants",
         "--link",
