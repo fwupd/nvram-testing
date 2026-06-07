@@ -25,12 +25,12 @@ def read_file(path: str | os.PathLike):
 
 def run_cmd(cmd: list[str] | str, **kwargs) -> subprocess.CompletedProcess:
     """Run a command"""
-    return subprocess.run(cmd, check=True, capture_output=True, **kwargs)
+    return subprocess.run(cmd, capture_output=True, **kwargs, encoding="utf8")
 
 
 def check_cmd(cmd: list[str] | str, **kwargs) -> subprocess.CompletedProcess:
     """Run a command, print nothing if successful, exit with error if failed"""
-    ret = run_cmd(cmd)
+    ret = run_cmd(cmd, check=False)
     if ret.returncode != 0:
         msg = "\n".join([f"command failed: {cmd}", f"command error:", ret.stderr])
         sys.stderr.write(msg)
@@ -73,15 +73,24 @@ def run_vm(image: str):
     if not Path("custom_VARS.fd").exists():
         build_custom_vars()
 
+    # get qemu
+    paths = ["qemu-kvm", "/usr/libexec/qemu-kvm", "qemu-system-x86_64"]
+    paths = [shutil.which(i) for i in paths if shutil.which(i)]
+    if not paths:
+        sys.stderr.write("Couldn't find a qemu binary!")
+        sys.exit(1)
+
+    qemu = paths[0]
+
     check_cmd(
         [
-            "qemu-system-x86_64",
+            qemu,
             "-cpu",
             "host",
             "-machine",
             "type=q35,accel=kvm",
             "-m",
-            "4G",
+            "1G",
             "-smp",
             "4",
             "-nic",
