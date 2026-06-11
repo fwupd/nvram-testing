@@ -45,7 +45,7 @@ def download_file(url, target_dir):
 
 def get_reqs(
     image_url: str = IMAGE_URL,
-    copy_in: str | None = None,
+    copy_in: list[str] = [],
     update_pkgs: bool = False,
 ):
     """Download requirements and customize the VM image."""
@@ -56,6 +56,11 @@ def get_reqs(
         download_file(image_url, Path("."))
 
     # Customize the image
+    copy_in_args = [
+            arg
+            for sublist in [["--copy-in", i] for i in copy_in]
+            for arg in sublist
+    ]
     virt_cmd: list[str] = [
         "virt-customize",
         "--add",
@@ -70,9 +75,8 @@ def get_reqs(
         "/dev/null:/etc/systemd/system/systemd-repart.service",
         "--root-password",
         "password:fwupd",
+        *copy_in_args,
     ]
-    if copy_in is not None and copy_in.strip():
-        virt_cmd.extend(["--copy-in", copy_in])
     if update_pkgs:
         virt_cmd.append("--update")
     run_cmd(virt_cmd)
@@ -99,6 +103,7 @@ def main():
     )
     parser.add_argument(
         "--copy-in",
+        action="append",
         default=None,
         metavar="SOURCE:DEST",
         help="Extra virt-customize --copy-in (host path or dir : guest dir)",
