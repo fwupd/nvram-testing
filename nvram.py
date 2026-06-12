@@ -148,8 +148,12 @@ def _filter_xml(fn_old: str, fn_new: str) -> None:
     with open(fn_old, "rb") as f:
         xml = f.read().decode()
     out_root = etree.Element("firmware", gtype="FuEfiVolume")
-    out_varstore = etree.SubElement(out_root, "firmware", gtype="FuEfiVss2VariableStore")
-    out_authvariable = etree.SubElement(out_varstore, "firmware", gtype="FuEfiVssAuthVariable")
+    out_varstore = etree.SubElement(
+        out_root, "firmware", gtype="FuEfiVss2VariableStore"
+    )
+    out_authvariable = etree.SubElement(
+        out_varstore, "firmware", gtype="FuEfiVssAuthVariable"
+    )
     root = etree.fromstring(xml)
     for var in root.xpath(
         "/firmware[@gtype='FuEfiVolume']"
@@ -161,31 +165,33 @@ def _filter_xml(fn_old: str, fn_new: str) -> None:
             continue
         etree.SubElement(out_authvariable, "id", id=variable)
         for certlist in var.xpath("firmware[@gtype='FuEfiSignatureList']"):
-            for cert in certlist.xpath(
-                "firmware[@gtype='FuEfiX509Signature']"
-            ):
-                ele_cert = etree.SubElement(out_authvariable, "firmware", gtype="FuEfiX509Signature")
+            for cert in certlist.xpath("firmware[@gtype='FuEfiX509Signature']"):
+                ele_cert = etree.SubElement(
+                    out_authvariable, "firmware", gtype="FuEfiX509Signature"
+                )
                 for key in ["id", "issuer", "subject"]:
                     etree.SubElement(ele_cert, key).text = cert.xpath(key)[0].text
                 continue
-            for cert in certlist.xpath(
-                "firmware[@gtype='FuEfiSignature']"
-            ):
-                ele_cert = etree.SubElement(out_authvariable, "firmware", gtype="FuEfiSignature")
+            for cert in certlist.xpath("firmware[@gtype='FuEfiSignature']"):
+                ele_cert = etree.SubElement(
+                    out_authvariable, "firmware", gtype="FuEfiSignature"
+                )
                 for key in ["owner"]:
                     etree.SubElement(ele_cert, key).text = cert.xpath(key)[0].text
                 continue
     with open(fn_new, "wb") as f:
         f.write(etree.tostring(out_root, pretty_print=True))
 
+
 def compare():
     """Compare old and new firmware."""
     run_cmd(
-        f"{FWUPDTOOL} firmware-export custom_VARS.fd efi-volume --json > raw.xml", shell=True
+        f"{FWUPDTOOL} firmware-export custom_VARS.fd efi-volume --json > raw.xml",
+        shell=True,
     )
 
     # lets filter this down to only the important stuff
-    _filter_xml("raw.xml", "new.xml");
+    _filter_xml("raw.xml", "new.xml")
 
     # diff returns non-zero if files differ, which is expected
     result = subprocess.run(["diff", "aim.xml", "new.xml"])
@@ -195,10 +201,11 @@ def compare():
         print("Differences shown above")
         sys.exit(1)
 
+
 def simplify():
 
     """Simplify the XML to only the interesting parts."""
-    _filter_xml("raw.xml", "aim.xml");
+    _filter_xml("raw.xml", "aim.xml")
 
 
 def main():
