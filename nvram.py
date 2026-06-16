@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
+from contextlib import chdir
 from pathlib import Path
 from urllib.parse import urlparse
 from lxml import etree
@@ -15,6 +16,11 @@ from lxml import etree
 
 # Configuration
 FWUPDTOOL = "fwupdtool"
+
+
+def read_file(path: str | os.PathLike):
+    f = open(path, "r")
+    return f.read().strip()
 
 
 def run_cmd(cmd: list[str] | str, **kwargs) -> subprocess.CompletedProcess:
@@ -87,6 +93,17 @@ def run_vm(image: str):
 
 def dump():
     """Dump EFI variables from system."""
+    sysdir = Path("/sys/devices/virtual/dmi/id")
+    sysfiles = ["sys_vendor", "product_family", "product_name"]
+    names = [read_file(sysdir / f).replace(" ", "_") for f in sysfiles]
+    newdir = Path("_-_".join(names))
+
+    try:
+        os.mkdir(newdir)
+    except FileExistsError:
+        sys.stderr.write(f"directory already exists! \t{newdir}\n")
+        sys.exit(1)
+
     efivars = Path("/sys/firmware/efi/efivars")
     vars_to_dump = [
         "PK-8be4df61-93ca-11d2-aa0d-00e098032b8c",
@@ -96,10 +113,12 @@ def dump():
     ]
 
     for var in vars_to_dump:
-        src = efivars / var
-        run_cmd(["dd", f"if={src}", f"of={var}"])
+        src = open(efivars / var, "rb")
+        with open(newdir / var, "wb") as f:
+            f.write(src.read())
 
-    print("EFI variables dumped")
+    sys.stderr.write("EFI variables dumped to directory:\n")
+    print(newdir)
 
 
 def extract():
