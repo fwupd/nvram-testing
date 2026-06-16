@@ -8,12 +8,12 @@
 
 # Adding Models
 
- * Create a new directory, with the format `Vendor - Model`.
- * Dump the UEFI variables using `make dump`.
- * Extract them using `make -C ../ extract`
+ * run `./nvram.py dump` in the parent directory. A new directory in format of VENDOR-FAMILY-MODEL is created
+ * enter the new directory
+ * Extract the varialbes using `../nvram.py extract`
  * Build some `custom_*.builder.xml` with the certs you want to include in the NVRAM
- * Build a `custom_VARS.fd` by running `make custom_VARS.fd`
- * Run the emulator using `make run`
+ * Build a `custom_VARS.fd` by running `../nvram.py build custom_VARS.fd`
+ * Run the emulator using `../nvram.py run`
  * Commit the raw only, for instance `git add *.builder.xml PK* KEK* db*`
 
 ## DBX
