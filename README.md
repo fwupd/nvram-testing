@@ -2,7 +2,7 @@
 
 ## Build Requirements
 
-    sudo dnf install gcab guestfs-tools make libvirt qemu-system-x86-core edk2-ovmf
+    sudo dnf install guestfs-tools make libvirt qemu-system-x86-core edk2-ovmf
     sudo dnf copr enable rhughes/fwupd
     sudo dnf update fwupd
 
@@ -21,4 +21,7 @@
 You can get an old DBX from the LVFS using:
 
     wget https://fwupd.org/downloads/093e6913dfecefbdaa9374a2e1caee7bf7e74c7eda847624e456e344884ba5f6-DBXUpdate-20241101-x64.cab
+
+You'll probably also need to install `gcab` to unpack it:
+
     gcab -x *DBXUpdate-20241101-x64.cab

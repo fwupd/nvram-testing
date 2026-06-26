@@ -51,7 +51,7 @@
       <attributes>non-volatile,bootservice-access,runtime-access,time-based-authenticated-write-access</attributes>
       <firmware gtype="FuEfiSignatureList">
         <firmware gtype="FuEfiSignature">
-          <filename>DBXUpdate-20241101.x64.bin</filename>
+          <filename>../common/DBXUpdate-20241101.x64.bin</filename>
         </firmware>
       </firmware>
     </firmware>
