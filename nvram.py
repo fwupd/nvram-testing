@@ -12,6 +12,9 @@ from contextlib import chdir
 from pathlib import Path
 from urllib.parse import urlparse
 from lxml import etree
+import xml.etree.ElementTree as ET
+
+import varsxml
 
 
 # Configuration
@@ -27,12 +30,9 @@ def run_cmd(cmd: list[str] | str, **kwargs) -> subprocess.CompletedProcess:
     """Run a command"""
     ret = subprocess.run(cmd, **kwargs)
     if ret.returncode != 0:
-        msg = [
-                f"A command '{cmd}' has failed with error output:",
-                "",
-                ret.stderr
-        ]
+        msg = [f"A command '{cmd}' has failed with error output:", "", ret.stderr]
     assert ret.returncode == 0, "\n".join(msg)
+    return ret
 
 
 def build_custom_vars():
@@ -94,8 +94,8 @@ def run_vm(image: str):
     )
 
 
-def dump():
-    """Dump EFI variables from system."""
+def add_current() -> os.PathLike:
+    """Add a new dir for current system, dump variables and create the builder XML"""
     sysdir = Path("/sys/devices/virtual/dmi/id")
     sysfiles = ["sys_vendor", "product_family", "product_name"]
     names = [read_file(sysdir / f).replace(" ", "_") for f in sysfiles]
@@ -107,6 +107,20 @@ def dump():
         sys.stderr.write(f"directory already exists! \t{newdir}\n")
         sys.exit(1)
 
+    with chdir(newdir):
+        dump()
+        extracted = extract()
+        # TODO: filter out new certs
+        extracted["dbx"] = [["filename", "../common/DBXUpdate-20241101.x64.bin"]]
+        with open("custom_VARS.builder.xml", "w") as f:
+            f.write(varsxml.build_xml(extracted))
+
+    return newdir
+
+
+def dump() -> list[str]:
+    """Dump EFI variables from system."""
+
     efivars = Path("/sys/firmware/efi/efivars")
     vars_to_dump = [
         "PK-8be4df61-93ca-11d2-aa0d-00e098032b8c",
@@ -115,16 +129,16 @@ def dump():
         "dbx-d719b2cb-3d3a-4596-a3bc-dad00e67656f",
     ]
 
+    dumped = []
     for var in vars_to_dump:
         src = open(efivars / var, "rb")
-        with open(newdir / var, "wb") as f:
+        with open(var, "wb") as f:
             f.write(src.read())
+        dumped.append(var)
+    return dumped
 
-    sys.stderr.write("EFI variables dumped to directory:\n")
-    print(newdir)
 
-
-def extract():
+def extract() -> dict[str, list[list]]:
     """Extract firmware signatures from EFI variables."""
     vars_to_extract = [
         "PK-8be4df61-93ca-11d2-aa0d-00e098032b8c",
@@ -132,10 +146,22 @@ def extract():
         "db-d719b2cb-3d3a-4596-a3bc-dad00e67656f",
     ]
 
+    files = {}
     for var in vars_to_extract:
-        run_cmd([FWUPDTOOL, "firmware-extract", var, "efi-signature-list"])
-
-    print("Firmware extracted")
+        label = var.split("-", 1)[0]
+        result = run_cmd(
+            [FWUPDTOOL, "firmware-extract", var, "efi-signature-list"],
+            capture_output=True,
+            text=True,
+        )
+        # xml use runs to parsing errors, trying to split lines from .stdout
+        # directly inserts random newlines into the file names. The l[16:]
+        # construct can break if fwupdtool output changes but we can adapt
+        # if/when that comes
+        out_files = result.stdout[result.stdout.find("Writing") :]
+        filenames = [l[16:] for l in out_files.splitlines() if l.endswith(".der")]
+        files[label] = [["filename", f] for f in filenames]
+    return files
 
 
 def build_siglist(xml_file: str):
@@ -238,7 +264,9 @@ def main():
 Available targets:
   build       Build custom_VARS.fd from custom_VARS.builder.xml
   run         Run QEMU with custom firmware (builds if needed)
-  dump        Dump EFI variables from system
+  add-current Add a directory with the EFI variables of the current system and
+                generate a stock custom_VARS.builder.xml file
+  dump        Dump EFI variables from system to the current directory
   extract     Extract firmware signatures
   siglist     Build .siglist from .builder.xml file
   clean       Remove generated files (*.siglist, *.fd)
@@ -277,8 +305,6 @@ Available targets:
         "build": build_custom_vars,
         "custom_vars": build_custom_vars,
         "run": lambda: run_vm(args.image),
-        "dump": dump,
-        "extract": extract,
         "clean": clean,
         "compare": compare,
         "simplify": simplify,
@@ -291,6 +317,21 @@ Available targets:
             )
             sys.exit(1)
         build_siglist(args.args[0])
+    elif args.target == "dump":
+        files = dump()
+        for f in files:
+            print(f)
+    elif args.target == "extract":
+        files = extract()
+        for label, names in files.items():
+            for name in names:
+                print(f"{label}: {name[1]}")
+    elif args.target == "add-current":
+        newdir = add_current()
+        sys.stderr.write(
+            f"The EFI variables have beend dumped and the corresponding custom_VARS.builder.xml was created in:\n"
+        )
+        print(newdir)
     elif args.target in targets:
         targets[args.target]()
     else:
