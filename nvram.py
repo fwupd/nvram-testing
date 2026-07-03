@@ -24,12 +24,15 @@ def read_file(path: str | os.PathLike):
 
 
 def run_cmd(cmd: list[str] | str, **kwargs) -> subprocess.CompletedProcess:
-    """Run a command and print it first."""
-    if isinstance(cmd, list):
-        print(f"+ {' '.join(cmd)}")
-    else:
-        print(f"+ {cmd}")
-    return subprocess.run(cmd, check=True, **kwargs)
+    """Run a command"""
+    ret = subprocess.run(cmd, **kwargs)
+    if ret.returncode != 0:
+        msg = [
+                f"A command '{cmd}' has failed with error output:",
+                "",
+                ret.stderr
+        ]
+    assert ret.returncode == 0, "\n".join(msg)
 
 
 def build_custom_vars():
