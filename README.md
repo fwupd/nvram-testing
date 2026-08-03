@@ -8,6 +8,25 @@ Fedora/CentOS:
     sudo dnf install python3-lxml python3-requests
     sudo dnf copr enable rhughes/fwupd
     sudo dnf update fwupd
+    pip install behavex
+
+# Testing
+
+Each hardware model directory is built and booted as a BehaveX scenario. Run
+the whole suite with:
+
+    behavex features -D image=Fedora-Server-Guest-Generic-44-1.7.x86_64.qcow2
+
+If `-D image=...` is omitted, the `IMAGE` environment variable is used, then
+`Fedora-Server-Guest-Generic-44-1.7.x86_64.qcow2` as a last resort. Model
+directories are discovered automatically (any directory with a
+`custom_VARS.builder.xml`), so no feature-file changes are needed when adding
+a model.
+
+Each `run` step launches an interactive QEMU/VNC session, same as running
+`nvram.py run` by hand — close the VM to let the scenario complete. Because
+`nvram.py run` hardcodes the VNC display, don't run with
+`--parallel-processes` greater than 1.
 
 # Adding Models
 
